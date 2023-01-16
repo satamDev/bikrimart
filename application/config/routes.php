@@ -138,9 +138,11 @@ $route['customer/address/details'] = 'Frontend/Address/view_detail_deliver_addre
 
 ////////////////////// Vendor Routes start ///////////////////////////////
 
-
+$route['vendor'] = 'Frontend/Vendor/Common';
 
 $route['vendor/login'] = 'Frontend/Vendor/Login';
+
+$route['vendor/signup'] = 'Frontend/Vendor/Signup';
 
 $route['vendor/dashboard'] = 'Frontend/Vendor/Dashboard';
 
@@ -216,13 +218,13 @@ $route['display_product_for_mobile'] = 'Vendor/search_product_for_mobile';
 
 
 
-$route['display_inventory_items'] = 'Vendor/display_inventory_items';
+$route['display_inventory_items'] = 'Frontend/Vendor/Api/Inventory_Api/get_products_list';
 
-$route['edit_inventory_product'] = 'Vendor/fetch_product_details_for_edit';
+$route['edit_inventory_product'] = 'Frontend/Vendor/Api/Inventory_Api/get_product_details';
 
-$route['update_inventory_product'] = 'Vendor/update_inventory_product_details';
+$route['update_inventory_product'] = 'Frontend/Vendor/Api/Inventory_Api/update_product_details';
 
-$route['delete_inventory_product'] = 'Vendor/delete_inventory_product';
+$route['delete_inventory_product'] = 'Frontend/Vendor/Api/Inventory_Api/delete_product';
 
 
 
@@ -230,33 +232,33 @@ $route['delete_inventory_product'] = 'Vendor/delete_inventory_product';
 
 
 
-$route['active_free_delivery'] = 'Vendor/active_free_delivery';
+$route['active_free_delivery'] = 'Frontend/Vendor/Api/Store_Api/activate_free_delivery';
 
-$route['deactive_free_delivery'] = 'Vendor/deactive_free_delivery';
+$route['deactive_free_delivery'] = 'Frontend/Vendor/Api/Store_Api/deactivate_free_delivery';
 
-$route['active_home_delivery'] = 'Vendor/active_home_delivery';
+$route['active_home_delivery'] = 'Frontend/Vendor/Api/Store_Api/activate_home_delivery';
 
-$route['deactive_home_delivery'] = 'Vendor/deactive_home_delivery';
+$route['deactive_home_delivery'] = 'Frontend/Vendor/Api/Store_Api/deactivate_home_delivery';
 
-$route['active_pickup_from_store'] = 'Vendor/active_pickup_from_store';
+$route['active_pickup_from_store'] = 'Frontend/Vendor/Api/Store_Api/activate_pickup_from_store';
 
-$route['deactive_pickup_from_store'] = 'Vendor/deactive_pickup_from_store';
+$route['deactive_pickup_from_store'] = 'Frontend/Vendor/Api/Store_Api/deactivate_pickup_from_store';
 
-$route['active_stock_management'] = 'Vendor/active_stock_management';
+$route['active_stock_management'] = 'Frontend/Vendor/Api/Store_Api/activate_stock_management';
 
-$route['deactive_stock_management'] = 'Vendor/deactive_stock_management';
+$route['deactive_stock_management'] = 'Frontend/Vendor/Api/Store_Api/deactivate_stock_management';
 
-$route['active_cash_on_delivery'] = 'Vendor/active_cod';
+$route['active_cash_on_delivery'] = 'Frontend/Vendor/Api/Store_Api/activate_cod';
 
-$route['deactive_cash_on_delivery'] = 'Vendor/deactive_cod';
+$route['deactive_cash_on_delivery'] = 'Frontend/Vendor/Api/Store_Api/deactivate_cod';
 
-$route['active_online_payment'] = 'Vendor/active_online_payment';
+$route['active_online_payment'] = 'Frontend/Vendor/Api/Store_Api/activate_online_payment';
 
-$route['deactive_online_payment'] = 'Vendor/deactive_online_payment';
+$route['deactive_online_payment'] = 'Frontend/Vendor/Api/Store_Api/deactivate_online_payment';
 
-$route['update_delivery_charges'] = 'Vendor/update_delivery_charges';
+$route['update_delivery_charges'] = 'Frontend/Vendor/Api/Store_Api/update_delivery_charges';
 
-$route['update_bank_details'] = 'Vendor/update_bank_details';
+$route['update_bank_details'] = 'Frontend/Vendor/Apiupdate_bank_details';
 
 
 

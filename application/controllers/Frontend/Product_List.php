@@ -16,7 +16,22 @@ class Product_List extends CI_Controller
     {
         $this->load->model('Customer/Customer_model');
     }
-  
+
+    private function init_uid_server_model()
+    {
+        $this->load->model('Uid_server_model');
+    }
+
+    private function init_common_model()
+    {
+        $this->load->model('Common_model');
+    }
+
+    private function response($data, $status)
+    {
+        return $this->output->set_content_type("application/json")->set_status_header($status)->set_output(json_encode($data));
+    }
+
     public function index()
     {
         $this->view_index();
@@ -33,6 +48,7 @@ class Product_List extends CI_Controller
         $this->load->view('customer/inc/footer');
         $this->load->view('customer/inc/footer_link');
         $this->load->view('customer/inc/custom_js/cart_js');
+
         $this->load->view('customer/inc/custom_js/header_js');
     }
 
@@ -119,7 +135,26 @@ class Product_List extends CI_Controller
         // $this->load->view('customer/inc/custom_js/shop_js');
     }
 
-   
+    public function display_product_for_shop()
+    {
+        $vendor_id = $this->input->get(query_param_vendor_id);
+
+        $pageSize = ($this->input->get(query_param_page_size) != null) ? $this->input->get(query_param_page_size) : 10;
+        $pageNo = ($this->input->get(query_param_page_no) != null) ? $this->input->get(query_param_page_no) : 0;
+
+        $this->init_customer_model();
+        $result = $this->Customer_model->display_product_for_shop($vendor_id, $pageSize, $pageNo);
+
+        $data = $result['data'];
+        $pagination_data = $result['pagination_data'];
+
+        if (!empty($data)) {
+            $this->response(["success" => true, "message" => "found", "data" => $data, "pagination" => $pagination_data], 200);
+        } else {
+            $this->response(["success" => false, "message" => "not found"], 200);
+        }
+    }
+
 
 
 
