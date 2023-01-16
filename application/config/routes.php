@@ -260,5 +260,4 @@ $route['update_bank_details'] = 'Vendor/update_bank_details';
 
 
 
-aaaa
 
