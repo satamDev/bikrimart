@@ -3,6 +3,107 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
+
+/*
+
+| -------------------------------------------------------------------------
+
+| URI ROUTING
+
+| -------------------------------------------------------------------------
+
+| This file lets you re-map URI requests to specific controller functions.
+
+|
+
+| Typically there is a one-to-one relationship between a URL string
+
+| and its corresponding controller class/method. The segments in a
+
+| URL normally follow this pattern:
+
+|
+
+|	example.com/class/method/id/
+
+|
+
+| In some instances, however, you may want to remap this relationship
+
+| so that a different class/function is called than the one
+
+| corresponding to the URL.
+
+|
+
+| Please see the user guide for complete details:
+
+|
+
+|	https://codeigniter.com/userguide3/general/routing.html
+
+|
+
+| -------------------------------------------------------------------------
+
+| RESERVED ROUTES
+
+| -------------------------------------------------------------------------
+
+|
+
+| There are three reserved routes:
+
+|
+
+|	$route['default_controller'] = 'welcome';
+
+|
+
+| This route indicates which controller class should be loaded if the
+
+| URI contains no data. In the above example, the "welcome" class
+
+| would be loaded.
+
+|
+
+|	$route['404_override'] = 'errors/page_missing';
+
+|
+
+| This route will tell the Router which controller/method to use if those
+
+| provided in the URL cannot be matched to a valid route.
+
+|
+
+|	$route['translate_uri_dashes'] = FALSE;
+
+|
+
+| This is not exactly a route, but allows you to automatically route
+
+| controller and method names that contain dashes. '-' isn't a valid
+
+| class or method name character, so it requires translation.
+
+| When you set this option to TRUE, it will replace ALL dashes in the
+
+| controller and method URI segments.
+
+|
+
+| Examples:	my-controller/index	-> my_controller/index
+
+|		my-controller/my-method	-> my_controller/my_method
+
+*/
+
+// $route['default_controller'] = 'welcome';
+
+
+
 $route['default_controller'] = 'home';
 
 $route['404_override'] = '';
@@ -37,9 +138,11 @@ $route['customer/address/details'] = 'Frontend/Address/view_detail_deliver_addre
 
 ////////////////////// Vendor Routes start ///////////////////////////////
 
-
+$route['vendor'] = 'Frontend/Vendor/Common';
 
 $route['vendor/login'] = 'Frontend/Vendor/Login';
+
+$route['vendor/signup'] = 'Frontend/Vendor/Signup';
 
 $route['vendor/dashboard'] = 'Frontend/Vendor/Dashboard';
 
@@ -115,13 +218,13 @@ $route['display_product_for_mobile'] = 'Vendor/search_product_for_mobile';
 
 
 
-$route['display_inventory_items'] = 'Vendor/display_inventory_items';
+$route['display_inventory_items'] = 'Frontend/Vendor/Api/Inventory_Api/get_products_list';
 
-$route['edit_inventory_product'] = 'Vendor/fetch_product_details_for_edit';
+$route['edit_inventory_product'] = 'Frontend/Vendor/Api/Inventory_Api/get_product_details';
 
-$route['update_inventory_product'] = 'Vendor/update_inventory_product_details';
+$route['update_inventory_product'] = 'Frontend/Vendor/Api/Inventory_Api/update_product_details';
 
-$route['delete_inventory_product'] = 'Vendor/delete_inventory_product';
+$route['delete_inventory_product'] = 'Frontend/Vendor/Api/Inventory_Api/delete_product';
 
 
 
@@ -129,33 +232,33 @@ $route['delete_inventory_product'] = 'Vendor/delete_inventory_product';
 
 
 
-$route['active_free_delivery'] = 'Vendor/active_free_delivery';
+$route['active_free_delivery'] = 'Frontend/Vendor/Api/Store_Api/activate_free_delivery';
 
-$route['deactive_free_delivery'] = 'Vendor/deactive_free_delivery';
+$route['deactive_free_delivery'] = 'Frontend/Vendor/Api/Store_Api/deactivate_free_delivery';
 
-$route['active_home_delivery'] = 'Vendor/active_home_delivery';
+$route['active_home_delivery'] = 'Frontend/Vendor/Api/Store_Api/activate_home_delivery';
 
-$route['deactive_home_delivery'] = 'Vendor/deactive_home_delivery';
+$route['deactive_home_delivery'] = 'Frontend/Vendor/Api/Store_Api/deactivate_home_delivery';
 
-$route['active_pickup_from_store'] = 'Vendor/active_pickup_from_store';
+$route['active_pickup_from_store'] = 'Frontend/Vendor/Api/Store_Api/activate_pickup_from_store';
 
-$route['deactive_pickup_from_store'] = 'Vendor/deactive_pickup_from_store';
+$route['deactive_pickup_from_store'] = 'Frontend/Vendor/Api/Store_Api/deactivate_pickup_from_store';
 
-$route['active_stock_management'] = 'Vendor/active_stock_management';
+$route['active_stock_management'] = 'Frontend/Vendor/Api/Store_Api/activate_stock_management';
 
-$route['deactive_stock_management'] = 'Vendor/deactive_stock_management';
+$route['deactive_stock_management'] = 'Frontend/Vendor/Api/Store_Api/deactivate_stock_management';
 
-$route['active_cash_on_delivery'] = 'Vendor/active_cod';
+$route['active_cash_on_delivery'] = 'Frontend/Vendor/Api/Store_Api/activate_cod';
 
-$route['deactive_cash_on_delivery'] = 'Vendor/deactive_cod';
+$route['deactive_cash_on_delivery'] = 'Frontend/Vendor/Api/Store_Api/deactivate_cod';
 
-$route['active_online_payment'] = 'Vendor/active_online_payment';
+$route['active_online_payment'] = 'Frontend/Vendor/Api/Store_Api/activate_online_payment';
 
-$route['deactive_online_payment'] = 'Vendor/deactive_online_payment';
+$route['deactive_online_payment'] = 'Frontend/Vendor/Api/Store_Api/deactivate_online_payment';
 
-$route['update_delivery_charges'] = 'Vendor/update_delivery_charges';
+$route['update_delivery_charges'] = 'Frontend/Vendor/Api/Store_Api/update_delivery_charges';
 
-$route['update_bank_details'] = 'Vendor/update_bank_details';
+$route['update_bank_details'] = 'Frontend/Vendor/Apiupdate_bank_details';
 
 
 

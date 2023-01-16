@@ -7,7 +7,7 @@
 <script>
     $.ajax({
         type: "GET",
-        url: "<?= base_url(WEB_PANEL_CUSTOMER.'Address_Api/get_user_name') ?>",
+        url: "<?= base_url('customer/get_user_name') ?>",
         error: function(response) {
             console.lo(response);
         },
@@ -27,7 +27,7 @@
         var email = $('#user_email').val();
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER.'Address_Api/save_user_details') ?>",
+            url: "<?= base_url('customer/save_user_details') ?>",
             data: {
                 "name": name,
                 "email": email
@@ -49,7 +49,7 @@
 
     $.ajax({
         type:"post",
-        url:"<?=base_url(WEB_PANEL_CUSTOMER.'Address_Api/check_customer_id_exist')?>",
+        url:"<?=base_url('customer/check_customer_id_exist')?>",
         error:function(response){
             console.log(response);
         },

@@ -1,27 +1,31 @@
-<style>
+<?php
+if ($this->session->userdata('openChekModal')) {
+    $modal = "style='display:block;'";
+} else {
+    $modal = "style=''";
+}
+?>
 
-</style>
 <!-- cart list modal -->
 <div class="modal fade cartlistfxd" id="cartlistfxd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content border-0">
             <div class="modal-body p-0">
-                <div class="cartlistfxdwrp" id="cartModal">
-
+                <div class="cartlistfxdwrp">
                     <div class="cartlistfxdhdr py-2 px-3 border-bottom bg-light">
                         <div class="d-flex alogn-items-center">
                             <button class="hdrbtn" type="button" data-dismiss="modal">
                                 <svg fill="#333333" width="16" height="16" version="1.1" id="lni_lni-chevron-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
                                     <path d="M45,62.8c-0.5,0-0.9-0.2-1.3-0.6L18.6,35.4c-1.7-1.9-1.7-4.9,0-6.7L43.7,1.8c0.7-0.7,1.8-0.7,2.5-0.1
-                                    c0.7,0.7,0.7,1.8,0.1,2.5L21.1,31c-0.5,0.5-0.5,1.4,0,2l25.2,26.8c0.7,0.7,0.6,1.8-0.1,2.5C45.9,62.6,45.4,62.8,45,62.8z" />
+                                      c0.7,0.7,0.7,1.8,0.1,2.5L21.1,31c-0.5,0.5-0.5,1.4,0,2l25.2,26.8c0.7,0.7,0.6,1.8-0.1,2.5C45.9,62.6,45.4,62.8,45,62.8z" />
                                 </svg>
                             </button>
                             <big class="ml-2">MY CART</big>
                             <button class="ml-auto hdrbtn" type="button" data-dismiss="modal">
                                 <svg height="14" width="14" fill="#333333" version="1.1" id="lni_lni-close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
                                     <path d="M34.5,32L62.2,4.2c0.7-0.7,0.7-1.8,0-2.5c-0.7-0.7-1.8-0.7-2.5,0L32,29.5L4.2,1.8c-0.7-0.7-1.8-0.7-2.5,0
-                                c-0.7,0.7-0.7,1.8,0,2.5L29.5,32L1.8,59.8c-0.7,0.7-0.7,1.8,0,2.5c0.3,0.3,0.8,0.5,1.2,0.5s0.9-0.2,1.2-0.5L32,34.5l27.7,27.8
-                                c0.3,0.3,0.8,0.5,1.2,0.5c0.4,0,0.9-0.2,1.2-0.5c0.7-0.7,0.7-1.8,0-2.5L34.5,32z" />
+                                  c-0.7,0.7-0.7,1.8,0,2.5L29.5,32L1.8,59.8c-0.7,0.7-0.7,1.8,0,2.5c0.3,0.3,0.8,0.5,1.2,0.5s0.9-0.2,1.2-0.5L32,34.5l27.7,27.8
+                                  c0.3,0.3,0.8,0.5,1.2,0.5c0.4,0,0.9-0.2,1.2-0.5c0.7-0.7,0.7-1.8,0-2.5L34.5,32z" />
                                 </svg>
                             </button>
                         </div>
@@ -37,7 +41,7 @@
                                     <div class="ml-auto">
                                         <svg height="20" width="20" version="1.1" id="lni_lni-chevron-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
                                             <path d="M19,62.8c-0.4,0-0.9-0.2-1.2-0.5c-0.7-0.7-0.7-1.8-0.1-2.5L42.9,33c0.5-0.5,0.5-1.4,0-2L17.7,4.2c-0.7-0.7-0.6-1.8,0.1-2.5
-                                            c0.7-0.7,1.8-0.6,2.5,0.1l25.2,26.8c1.7,1.9,1.7,4.9,0,6.7L20.3,62.2C19.9,62.6,19.5,62.8,19,62.8z" />
+                                              c0.7-0.7,1.8-0.6,2.5,0.1l25.2,26.8c1.7,1.9,1.7,4.9,0,6.7L20.3,62.2C19.9,62.6,19.5,62.8,19,62.8z" />
                                         </svg>
                                     </div>
                                 </div>
@@ -63,31 +67,31 @@
 
                         </div>
                     </div>
-
-                    <!-- <div class="btmfxxd"> -->
-                        <div class="billdtls p-3 proceed_to_checkout">
-                            <h3 class="mb-3">Total</h3>
-                            <div class="d-flex mb-2">
-                                <span>Price</span>
-                                <span class="ml-auto ">₹ <span class="cart_price">00</span></span>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <span>Delivery Charge
-                                    <span>
-                                        <i class="fas fa-info-circle ml-2" id="delivery_charge_info" data-container="body" data-toggle="popover" data-placement="top" data-content="" style="cursor:pointer"></i>
-                                    </span>
-                                </span>
-                                <span class="ml-auto" id="">₹ <span id="delivery_charge">0.00</span> </span>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <span>Total Price</span>
-                                <strong class="ml-auto" id="">₹ <span id="pay_price">0.00</span> </strong>
-                            </div>
+                    <div class="billdtls p-3 proceed_to_checkout">
+                        <h3 class="mb-3">Total</h3>
+                        <div class="d-flex mb-2">
+                            <span>Price</span>
+                            <span class="ml-auto ">₹ <span class="cart_price">00</span></span>
                         </div>
-                        <div class="checkoutbtnfxd proceed_to_checkout">
-                            <div class="d-flex align-items-center">
-                                <svg fill="#ffffff" width="40" height="40" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 189.948 189.948" style="enable-background:new 0 0 189.948 189.948;" xml:space="preserve">
-                                    <path d="M164.613,56.66L132.259,9.34c-2.371-3.467-7.106-4.357-10.576-1.986c-3.469,2.374-4.357,7.106-1.986,10.576
+                        <div class="d-flex mb-2">
+                            <span>Delivery Charge
+                                <span>
+                                    <i class="fas fa-info-circle ml-2" id="delivery_charge_info" data-container="body" data-toggle="popover" data-placement="top" data-content="" style="cursor:pointer"></i>
+                                </span>
+
+
+                            </span>
+                            <span class="ml-auto" id="">₹ <span id="delivery_charge">0.00</span> </span>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <span>Total Price</span>
+                            <strong class="ml-auto" id="">₹ <span id="pay_price">0.00</span> </strong>
+                        </div>
+                    </div>
+                    <div class="checkoutbtnfxd proceed_to_checkout">
+                        <div class="d-flex align-items-center">
+                            <svg fill="#ffffff" width="40" height="40" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 189.948 189.948" style="enable-background:new 0 0 189.948 189.948;" xml:space="preserve">
+                                <path d="M164.613,56.66L132.259,9.34c-2.371-3.467-7.106-4.357-10.576-1.986c-3.469,2.374-4.357,7.106-1.986,10.576
                                   l26.437,38.659H43.815L70.247,17.93c2.374-3.469,1.484-8.202-1.986-10.576C64.792,4.98,60.057,5.873,57.688,9.34L25.334,56.66
                                   C11.248,57.375,0,69.026,0,83.29c0,7.033,2.787,13.69,7.74,18.682l10.708,63.311c0.378,10.343,8.91,18.641,19.341,18.641h114.367
                                   c10.431,0,18.963-8.296,19.341-18.641l10.708-63.308c4.953-4.994,7.743-11.651,7.743-18.684
@@ -95,25 +99,23 @@
                                   c0,2.28-1.854,4.139-4.137,4.139H37.789c-2.283,0-4.139-1.856-4.139-4.139L21.821,93.992l-2.25-1.811
                                   c-2.77-2.229-4.357-5.471-4.357-8.894c0-6.333,5.148-11.481,11.476-11.481h136.558c6.328,0,11.476,5.151,11.476,11.481
                                   C174.73,86.713,173.143,89.955,170.373,92.179z" />
-                                </svg>
-                                <div class="checkitem ml-3">
-                                    <div class="mb-1">
-                                        <strong><span id="chkproduct">0</span></strong> Items
-                                    </div>
-                                    <strong class="d-block">&#8377; <span id="chkprice">00.00</span> </strong>
+                            </svg>
+                            <div class="checkitem ml-3">
+                                <div class="mb-1">
+                                    <strong><span id="chkproduct">0</span></strong> Items
                                 </div>
-                                <button class="ml-auto checkoutbtn" type="button" data-toggle="modal" data-target="#chkout" data-dismiss="modal" aria-label="Close">
-                                    Proceed to Checkout
-                                    <svg class="ml-3" fill="#fff" width="30" version="1.1" id="lni_lni-arrow-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
-                                        <path d="M61.5,28.5l-6.9-8.2c-0.6-0.7-1.7-0.8-2.5-0.2c-0.7,0.6-0.8,1.7-0.2,2.5l6.5,7.7H3c-1,0-1.8,0.8-1.8,1.8
+                                <strong class="d-block">&#8377; <span id="chkprice">00.00</span> </strong>
+                            </div>
+                            <button class="ml-auto checkoutbtn" type="button" data-toggle="modal" data-target="#chkout" data-dismiss="modal" aria-label="Close">
+                                Proceed to Checkout
+                                <svg class="ml-3" fill="#fff" width="30" version="1.1" id="lni_lni-arrow-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+                                    <path d="M61.5,28.5l-6.9-8.2c-0.6-0.7-1.7-0.8-2.5-0.2c-0.7,0.6-0.8,1.7-0.2,2.5l6.5,7.7H3c-1,0-1.8,0.8-1.8,1.8
                                   c0,1,0.8,1.8,1.8,1.8h55.4l-6.5,7.7c-0.6,0.7-0.5,1.8,0.2,2.5c0.3,0.3,0.7,0.4,1.1,0.4c0.5,0,1-0.2,1.3-0.6l6.9-8.2
                                   C63.2,33.5,63.2,30.5,61.5,28.5z" />
-                                    </svg>
-                                </button>
-                            </div>
+                                </svg>
+                            </button>
                         </div>
-                    <!-- </div> -->
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,7 +190,7 @@
                                                         <small>
                                                             <strong class="d-block customer_address mb-1">Vikash Singh (8100461999) - Home Anand Raj Nagar, Sapuipara, Howrah, West Bengal - 711227</strong>
                                                         </small>
-
+                                                        
                                                         <small>
                                                             <label class="d-block"><b>Apartment/Road/Area : </b>
                                                                 <span class="detail_address_road">

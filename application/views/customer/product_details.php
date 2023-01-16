@@ -444,40 +444,39 @@
         <div class="grocerysec align-items-center">
             <div class="py-4 px-1 grpslide1 ">
                 <?php
-                if (!empty($product_images)) {
-                    foreach ($product_images as $product) { ?>
-                        <div class="prodthmbimg">
-                            <a href="<?= base_url($product->path) ?>" class="glrythmb" data-fancybox="gallery">
-                                <img src="<?= base_url($product->path) ?>" alt="" class="img-fluid" style="width:100px;">
-                            </a>
-                        </div>
+                foreach ($product_images as $product) { ?>
+                    <div class="prodthmbimg">
+                        <a href="<?= base_url($product->path) ?>" class="glrythmb" data-fancybox="gallery">
+                            <img src="<?= base_url($product->path) ?>" alt="" class="img-fluid" style="width:100px;">
+                        </a>
+                    </div>
                 <?php
-                    }
                 }
                 ?>
+
             </div>
 
             <?php
-            if (!empty($product_details)) { ?>
+            foreach ($product_details as $product) { ?>
                 <div class="container1">
 
                     <div class="row mx-0 mb-4 align-items-center">
                         <div class="col-8 col-lg-12 border-bottom1 p-0 pb-3">
-                            <h3><?= ucwords($product_details['brand_name']) ?> <?= ucwords($product_details['product_name']) ?></h3>
-                            <input type="hidden" id="product_id" value="<?= $product_details['product_id'] ?>">
+                            <h3><?= ucwords($product['brand_name']) ?> <?= ucwords($product['product_name']) ?></h3>
+                            <input type="hidden" id="product_id" value="<?= $product['product_id'] ?>">
                         </div>
 
                         <!-- mobile view -->
                         <div class="col-4 pr-0 sh-mobile">
 
                             <div class="d-flex qtybox text-center">
-                                <button class="qtyboxbtn" type="button" onclick="dec(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')">
+                                <button class="qtyboxbtn" type="button" onclick="dec(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')">
                                     <i class="fas fa-minus"></i>
                                 </button>
 
-                                <input type="text" value="0" class="text-center product_qty <?= "quantity_" . $product_details['product_id'] ?>">
+                                <input type="text" value="0" class="text-center product_qty <?= "quantity_" . $product['product_id'] ?>">
 
-                                <button class="qtyboxbtn" onclick="inc(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')">
+                                <button class="qtyboxbtn" onclick="inc(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -487,7 +486,7 @@
 
                         <div class="col-12 p-0">
                             <?php
-                            if ($product_details['opening_stock'] == 0) { ?>
+                            if ($product['opening_stock'] == 0) { ?>
                                 <div class="gavailabl mt-3">Availability: <span class="text-danger">Out Of Stock</span></div>
                             <?php
                             }
@@ -501,7 +500,7 @@
                         <form action="#">
                             <label class="gpsecboxsz" for="gm1">
                                 <input type="radio" id="gm1" name="gpsize" value="30">
-                                <span><?= $product_details['weight'] ?> <?= $product_details['short_name'] ?></span>
+                                <span><?= $product['weight'] ?> <?= $product['short_name'] ?></span>
                             </label>
 
                             <!-- <label class="gpsecboxsz" for="gm1">
@@ -516,7 +515,7 @@
                         </form>
 
                     </div>
-                    <div class="d-block mb-3 h5">₹<?= $product_details['sale_price'] ?></div>
+                    <div class="d-block mb-3 h5">₹<?= $product['sale_price'] ?></div>
 
                     <button type="button" class="sh-mobile hdrbtn mb-3" data-toggle="modal" data-target="#productdtls">
                         <span class="mr-2" style="color: #01B659; font-weight: 500">Product details </span>
@@ -527,33 +526,33 @@
                     </button>
 
                     <?php
-                    if ($product_details['opening_stock'] < const_opening_stock_max_limit && $product_details['opening_stock'] != const_opening_stock_min_limit) { ?>
-                        <span>Hurry up! only <span class="text-success"><?= $product_details['opening_stock'] ?></span> products left in stock! </span>
+                    if ($product['opening_stock'] < 10 && $product['opening_stock'] != 0) { ?>
+                        <span>Hurry up! only <span class="text-success"><?= $product['opening_stock'] ?></span> products left in stock! </span>
                     <?php
                     }
                     ?>
                     <p class="mt-3 gpshrtdesc">
-                        <?= $product_details['description'] ?>
+                        <?= $product['description'] ?>
                     </p>
 
                     <div class="gpdtailsbtns d-flex align-items-center">
                         <div class="sh-desktop">
                             <div class="d-flex qtybox text-center mr-3">
 
-                                <button class="qtyboxbtn border-right" id="product_detail_dec_btn" onclick="dec(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')">
+                                <button class="qtyboxbtn border-right" id="product_detail_dec_btn" onclick="dec(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')">
                                     <i class="fas fa-minus"></i>
                                 </button>
 
-                                <input type="text" name="dprcrt1" value="0" class="text-center product_details_qty product_qty <?= "quantity_" . $product_details['product_id'] ?>" disabled>
+                                <input type="text" name="dprcrt1" value="0" class="text-center product_qty <?= "quantity_" . $product['product_id'] ?>" disabled>
 
-                                <button class="qtyboxbtn" type="button" id="product_detail_inc_btn" onclick="inc(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')">
+                                <button class="qtyboxbtn" type="button" id="product_detail_inc_btn" onclick="inc(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')">
                                     <i class="fas fa-plus"></i>
                                 </button>
 
                             </div>
                         </div>
 
-                        <button class="fxdaddtocart" type="button" onclick="buy_now(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')" id="btn_buy_now">Buy Now</button>
+                        <button class="fxdaddtocart" type="button" onclick="buy_now(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')" id="btn_buy_now">Buy Now</button>
                     </div>
 
                 </div>
@@ -562,7 +561,7 @@
             }
             ?>
 
-            <div class="tabdescriptionsec sh-desktop mt-5 w-100">
+            <div class="tabdescriptionsec sh-desktop mt-5">
                 <ul class="nav" id="myTab" role="tablist">
                     <li>
                         <a class="grcytabhed active" id="home-tab" data-toggle="tab" href="#grocryDesc" role="tab" aria-controls="grocryDesc1" aria-selected="true">Description</a>
@@ -578,7 +577,9 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="grocryDesc" role="tabpanel" aria-labelledby="grocryDesc-tab">
                         <h5>Description</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printeimply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a r took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                        <p>
+                            <?= $product['description'] ?>
+                        </p>
                     </div>
                     <div class="tab-pane fade" id="grocryaddinfor" role="tabpanel" aria-labelledby="grocryaddinfor-tab">
                         <h5>Additional Information</h5>
@@ -591,9 +592,12 @@
                 </div>
             </div>
 
-            <div class="card-body" style="display: <?= $this->uri->segment(1) == 'vendor' ? "none" : "" ?>">
+            <div class="card-body" id=''>
+                <div>
+                    <input type="text" value="<?= $vendor_id ?>" id="checked_vendor_id">
+                </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="vendor_list_table">
+                    <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">#</th>
@@ -609,10 +613,10 @@
                             ?>
                                     <tr>
                                         <td class="text-center">
-                                            <input type="radio" class="" name="vendor_list" id="RB<?= $val['vendor_id'] ?>" value="<?= $val['vendor_id'] ?>" <?= ($vendor_id == $val['vendor_id']) ? "checked" : "" ?> onclick="change_vendor_of_selected_product('<?= $val['vendor_id'] ?>', '<?= $master_id ?>')">
+                                            <input type="radio" class="" name="vendor_list" id="rb_<?= substr($val['vendor_id'], 7) ?>" value="<?= $val['vendor_id'] ?>" <?= ($vendor_id == $val['vendor_id']) ? "checked" : "" ?>>
                                         </td>
                                         <td class="text-center title">
-                                            <label for="RB<?= $val['vendor_id'] ?>" onclick="change_vendor_of_selected_product('<?= $val['vendor_id'] ?>', '<?= $master_id ?>')" style="cursor:pointer">
+                                            <label for="rb_<?= substr($val['vendor_id'], 7) ?>" id="<?= substr($val['vendor_id'], 7) ?>" onclick="change_vendor_of_selected_product(this.id, '<?=substr($master_id, 15)?>')" style="cursor:pointer">
                                                 <div>
                                                     <b><?= $val['store_name'] ?></b>
                                                 </div>
@@ -650,29 +654,27 @@
 
                 <div class="mstpplrslide">
                     <?php
-                    if (!empty($other_products)) {
-                        foreach ($other_products as $product) { ?>
-                            <div class="poplarthmb">
-                                <div class="catthmb">
-                                    <div class="prodgridimg">
-                                        <a href="<?= base_url('products/' . $product['product_id']) ?>">
-                                            <img src="<?= base_url($product['path']) ?>" alt="" class="w-100" style="height:120px;">
-                                        </a>
-                                    </div>
-                                    <div class="prodgridcon">
-                                        <a href="<?= base_url('products/' . $product['product_id']) ?>">
-                                            <h5 class="mt-1 mb-2"><?= ucwords($product['brand_name']) ?> <?= ucwords($product['product_name']) ?></h5>
-                                        </a>
-                                        <div class="mb-2"><?= $product['weight'] ?> <?= $product['short_name'] ?></div>
-                                        <strong class="d-block rodpprc mb-2">₹<?= $product['sale_price'] ?> <span>₹<?= $product['product_price'] ?></span></strong>
-                                        <span class="d-block mb-2" style="color: #01B659; font-weight: 500;"><?= $product['discount'] ?>% OFF</span>
-                                    </div>
+                    foreach ($other_products as $product) { ?>
+                        <div class="poplarthmb">
+                            <div class="catthmb">
+                                <div class="prodgridimg">
+                                    <a href="<?= base_url('products/' . $product['product_id']) ?>">
+                                        <img src="<?= base_url($product['path']) ?>" alt="" class="w-100" style="height:120px;">
+                                    </a>
+                                </div>
+                                <div class="prodgridcon">
+                                    <a href="<?= base_url('products/' . $product['product_id']) ?>">
+                                        <h5 class="mt-1 mb-2"><?= ucwords($product['brand_name']) ?> <?= ucwords($product['product_name']) ?></h5>
+                                    </a>
+                                    <div class="mb-2"><?= $product['weight'] ?> <?= $product['short_name'] ?></div>
+                                    <strong class="d-block rodpprc mb-2">₹<?= $product['sale_price'] ?> <span>₹<?= $product['product_price'] ?></span></strong>
+                                    <span class="d-block mb-2" style="color: #01B659; font-weight: 500;"><?= $product['discount'] ?>% OFF</span>
                                 </div>
                             </div>
-                    <?php
-                        }
-                    }
+                        </div>
 
+                    <?php
+                    }
                     ?>
                 </div>
                 <br><br><br><br><br><br>
@@ -1274,10 +1276,9 @@
                                 </button>
                             </div>
                         </div>
-
                         <div class="proddtlstxt">
                             <h3 class="mb-3">Description: </h3>
-                            <p> <?= $product_details['description'] ?></p>
+                            <p> <?= $product['description'] ?> </p>
 
                             <h3 class="mb-3">Additional Information: </h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>

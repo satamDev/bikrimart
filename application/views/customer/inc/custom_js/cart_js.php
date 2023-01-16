@@ -1,16 +1,16 @@
 <script>
+    // display_shop_product();
     display_product_price();
     display_cart_items();
     display_delivery_charges();
 
     var pageSize;
     var pageNo;
-    var productDetailsUrl;
     var vendorId = $('#vendor_id').val();
 
     $(document).ready(function() {
-        pageSize = '<?= const_page_size ?>';
-        pageNo = '<?= const_page_no ?>';
+        pageSize = 10;
+        pageNo = 0;
 
         display_shop_product(pageSize, pageNo, vendorId);
 
@@ -20,16 +20,14 @@
     function display_shop_product(pageSize, pageNo, vendorId) {
         if (vendorId == undefined) {
             vendorId = '';
-            productDetailsUrl = '<?= base_url('products/') ?>';
-        } else {
-            productDetailsUrl = '<?= base_url('vendor/products/') ?>';
+            var url = '';
         }
 
         // console.log(vendorId);
 
         $.ajax({
             type: "GET",
-            url: `<?= base_url(WEB_PANEL_CUSTOMER . 'Product_Api/display_product_for_shop') ?>?pageSize=${pageSize}&pageNo=${pageNo}&vendorId=${vendorId}`,
+            url: `<?= base_url('customer/display_product_for_shop') ?>?pageSize=${pageSize}&pageNo=${pageNo}&vendorId=${vendorId}`,
             error: function(response) {
                 console.log(response);
             },
@@ -46,17 +44,17 @@
                         }
                         details = `
                     
-                     <div class="prodlist mb-3 p-2 shadow-sm">
+                    <div class="prodlist mb-3 p-2 shadow-sm">
                                 <div class="row row5">
                                     <div class="col-3 col-lg-12 mb-2 product_image">
-                                        <a href="${productDetailsUrl}${data.product_id}" class="prodlistimg d-block">
+                                        <a href="<?= base_url('products/') ?>${data.product_id}" class="prodlistimg d-block">
                                             <img src="<?= base_url() ?>${data.path}" alt="" class="w-100">
                                         </a>
                                     </div>
                                     <div class="col-9 col-lg-12">
                                             
                                         <div class="prodlistcon">
-                                            <a href="${productDetailsUrl}/${data.product_id}">
+                                            <a href="<?= base_url('products/') ?>${data.product_id}">
                                                 <h4 class="mb-2 title">${data.brand_name} ${data.product_name}</h4>
                                             </a>
                                             
@@ -121,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            `;
+                    `;
                         $('#display_products').append(details);
                     });
                     get_user_cart_product();
@@ -157,6 +155,15 @@
 
     function add_product_to_cart(product_qty, product_id, master_id, vendor_id, brand_id) {
 
+        // let selected_vendor_id= '';
+        // let checked_vendor_id = $('#checked_vendor_id').val();
+        // if(checked_vendor_id ==''){
+        //     selected_vendor_id = vendor_id;        // default vendor of a product
+        // }
+        // else{
+        //     selected_vendor_id = checked_vendor_id;    // vendor selected by customer
+        // }
+
         let session_id = '';
         if (localStorage.getItem("session_id") && localStorage.getItem("session_id") != 'undefined') {
             session_id = localStorage.getItem("session_id");
@@ -166,12 +173,12 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/add_product_to_cart') ?>",
+            url: "<?= base_url('customer/add_product_to_cart') ?>",
             data: {
                 "qty": product_qty,
                 "product_id": product_id,
                 "master_id": master_id,
-                "vendor_id": vendor_id,
+                "vendor_id": vendor_id, 
                 "brand_id": brand_id,
                 "session_id": session_id,
             },
@@ -179,7 +186,6 @@
                 console.log(response);
             },
             success: function(response) {
-                console.log(response);
                 if (response.success) {
                     var session_id = response.data;
                     remember_user_session_id(session_id);
@@ -231,7 +237,7 @@
         }
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/delete_product_from_cart') ?>",
+            url: "<?= base_url('customer/delete_product_from_cart') ?>",
             data: {
                 "session_id": session_id,
                 "product_id": product_id,
@@ -244,6 +250,7 @@
                 // console.log(response);
                 if (response.success) {
                     display_product_price();
+                    display_shop_product();
                     display_cart_items();
                     display_delivery_charges();
 
@@ -262,7 +269,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/delete_cart_item') ?>",
+            url: "<?= base_url('customer/delete_cart_item') ?>",
             data: {
                 "id": cart_id
             },
@@ -272,17 +279,14 @@
             success: function(response) {
                 // console.log(response);
                 if (response.success) {
-
-                    $('.btn_wrapper').removeClass('bought');
-
-                    get_user_cart_product();
-
+                    display_shop_product();
                     display_product_price();
                     display_cart_items();
                     display_delivery_charges();
 
                     // mobile view
                     display_cart_items_mobile();
+
                     $('.product_qty').val(0); // for product details page
                 }
             }
@@ -302,7 +306,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Product_Api/get_user_cart_product_id') ?>",
+            url: "<?= base_url('customer/get_user_cart_product_id') ?>",
             data: {
                 "session_id": session_id
             },
@@ -311,19 +315,14 @@
             },
             success: function(response) {
                 // console.log(response);
-                if (response.success) {
-                    let data = response.data;
-                    $.each(data, function(i, data) {
+                var data = response.data;
+                $.each(data, function(i, data) {
 
-                        $('.default_btn_' + data.product_id).addClass('bought');
-                        $('.quantity_' + data.product_id).val(data.product_qty);
-                        $('.mobile_quantity_' + data.product_id).val(data.product_qty);
-                    });
-                } else {
+                    $('.default_btn_' + data.product_id).addClass('bought');
 
-                }
-
-
+                    $('.quantity_' + data.product_id).val(data.product_qty);
+                    $('.mobile_quantity_' + data.product_id).val(data.product_qty);
+                });
             }
         })
     }
@@ -340,7 +339,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/get_price_and_product_default') ?>",
+            url: "<?= base_url('customer/get_price_and_product_default') ?>",
             data: {
                 "session_id": session_id
             },
@@ -413,7 +412,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/display_cart_items') ?>",
+            url: "<?= base_url('customer/display_cart_items') ?>",
             data: {
                 "session_id": session_id
             },
@@ -507,7 +506,7 @@
 
     $.ajax({
         type: "GET",
-        url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Address_Api/get_customer_address') ?>",
+        url: "<?= base_url('customer/get_customer_address') ?>",
         error: function(response) {
             console.log(response);
         },
@@ -516,7 +515,7 @@
             if (response.success) {
                 var data = response.data;
                 if (data.house_number == null || data.house_number == '') data.house_number = 'Not Available';
-                $('.customer_address').html(data.address).addClass('title');
+                $('.customer_address').html(data.address + ' ' + data.pincode).addClass('title');
 
                 $('.detail_address_road').text(data.road).addClass('title');
                 $('.detail_address_number').text(data.house_number).addClass('title');
@@ -542,7 +541,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/display_delivery_details') ?>",
+            url: "<?= base_url('customer/display_delivery_details') ?>",
             data: {
                 "session_id": session_id
             },
@@ -581,62 +580,62 @@
 
     // Get product by date & time
 
-    // $('#delivery_date').change(function() {
-    //     var delivery_date = $('#delivery_date').val();
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "<?= base_url('customer/get_deliver_time_accroding_date') ?>",
-    //         data: {
-    //             "delivery_date": delivery_date
-    //         },
-    //         error: function(response) {
-    //             // console.log(response);
-    //         },
-    //         success: function(response) {
-    //             // console.log(response);
-    //             var data = response.data;
-    //             var current_date = response.date;
-    //             var max_date = response.max_date;
-    //             let deliver_time = response.time;
+    $('#delivery_date').change(function() {
+        var delivery_date = $('#delivery_date').val();
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('customer/get_deliver_time_accroding_date') ?>",
+            data: {
+                "delivery_date": delivery_date
+            },
+            error: function(response) {
+                // console.log(response);
+            },
+            success: function(response) {
+                // console.log(response);
+                var data = response.data;
+                var current_date = response.date;
+                var max_date = response.max_date;
+                let deliver_time = response.time;
 
-    //             var details = '';
-    //             $.each(data, function(i, data) {
-    //                 details += `<option data="${data.value}" value="${data.uid}">${data.time}</option>`;
-    //             });
-    //             $('#delivery_time').html(details);
+                var details = '';
+                $.each(data, function(i, data) {
+                    details += `<option data="${data.value}" value="${data.uid}">${data.time}</option>`;
+                });
+                $('#delivery_time').html(details);
 
-    //             document.getElementById("delivery_date").min = current_date;
-    //             document.getElementById("delivery_date").max = max_date;
+                document.getElementById("delivery_date").min = current_date;
+                document.getElementById("delivery_date").max = max_date;
 
-    //             $('#delivery_time').attr('selected', true);
+                $('#delivery_time').attr('selected', true);
 
-    //         }
-    //     })
-    // });
+            }
+        })
+    });
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "<?= base_url('customer/get_deliver_schedule_time') ?>",
-    //     error: function(response) {
-    //         // console.log(response);
-    //     },
-    //     success: function(response) {
-    //         // console.log(response);
-    //         var data = response.data;
-    //         var current_date = response.date;
-    //         var max_date = response.max_date;
-    //         var details = '';
-    //         $.each(data, function(i, data) {
+    $.ajax({
+        type: "POST",
+        url: "<?= base_url('customer/get_deliver_schedule_time') ?>",
+        error: function(response) {
+            // console.log(response);
+        },
+        success: function(response) {
+            // console.log(response);
+            var data = response.data;
+            var current_date = response.date;
+            var max_date = response.max_date;
+            var details = '';
+            $.each(data, function(i, data) {
 
-    //             details += `<option class="form-control" value="${data.uid}">${data.time}</option>`;
-    //         });
-    //         $('#delivery_time').html(details);
-    //         $('#delivery_date').val(current_date);
+                details += `<option class="form-control" value="${data.uid}">${data.time}</option>`;
+            });
+            $('#delivery_time').html(details);
+            $('#delivery_date').val(current_date);
 
-    //         document.getElementById("delivery_date").min = current_date;
-    //         document.getElementById("delivery_date").max = max_date;
-    //     }
-    // });
+            document.getElementById("delivery_date").min = current_date;
+            document.getElementById("delivery_date").max = max_date;
+        }
+    });
 
 
     //////////////////////////////// Mobile View Starts////////////////////////////////////////////////////////////////////
@@ -673,7 +672,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/display_cart_items') ?>",
+            url: "<?= base_url('customer/display_cart_items') ?>",
             data: {
                 "session_id": session_id
             },

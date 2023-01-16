@@ -55,13 +55,13 @@
                         </a>
                     </li>
                     <li>
-                        <a class="collapsed hassub mob-v" data-toggle="collapse" data-parent="#mnuaccordion" href="<?=base_url('Vendor/view_orders')?>">
+                        <a class="collapsed hassub mob-v" data-toggle="collapse" data-parent="#mnuaccordion" href="<?=base_url('vendor/order')?>">
                             <i><img src="<?= base_url() ?>assets/images/Orders.svg" alt=""></i>
                             Orders
                         </a>
 
 
-                        <a class="desk-v" href="<?=base_url('Vendor/view_orders')?>">
+                        <a class="desk-v" href="<?=base_url('vendor/order')?>">
                             <div class="d-flex align-items-center">
                                 <i><img src="<?= base_url() ?>assets/images/Orders.svg" alt=""></i>
                                 Orders
@@ -77,7 +77,7 @@
                                         <i><img src="<?= base_url() ?>assets/images/New-Order.svg" alt=""></i>
                                         New Order
                                     </a>
-                                    <a href="<?=base_url('Vendor/view_new_orders')?>" class="desk-v">
+                                    <a href="<?=base_url('vendor/order/new')?>" class="desk-v">
                                         <i><img src="<?= base_url() ?>assets/images/New-Order.svg" alt=""></i>
                                         New Order
                                     </a>
@@ -87,7 +87,7 @@
                                         <i><img src="<?= base_url() ?>assets/images/Completed-Order.svg" alt=""></i>
                                         Completed
                                     </a>
-                                    <a href="<?=base_url('Vendor/view_completed_orders')?>" class="desk-v">
+                                    <a href="<?=base_url('vendor/order/completed')?>" class="desk-v">
                                         <i><img src="<?= base_url() ?>assets/images/Completed-Order.svg" alt=""></i>
                                         Completed
                                     </a>
@@ -97,7 +97,7 @@
                                         <i><img src="<?= base_url() ?>assets/images/Cancelled-Order.svg" alt=""></i>
                                         Cancelled
                                     </a>
-                                    <a href="<?=base_url('Vendor/view_cancelled_orders')?>" class="desk-v">
+                                    <a href="<?=base_url('vendor/order/cancelled')?>" class="desk-v">
                                         <i><img src="<?= base_url() ?>assets/images/Cancelled-Order.svg" alt=""></i>
                                         Cancelled
                                     </a>

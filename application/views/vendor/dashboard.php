@@ -5,7 +5,11 @@
  </style>
 
  <div class="dashinr">
-     <div class="container px-3 py-4">
+     <div class="container px-3 py-4" style="overflow:auto;">
+
+         <!-- ================================== -->
+         <!-- Summary Card Listing Section Start -->
+         <!-- ================================== -->
          <div class="countsecwrp mb-4">
              <div class="row row5">
                  <div class="col-6 col-lg-3 mb-3 px-2">
@@ -21,12 +25,12 @@
 
                          </div>
                          <div>
-                             <h5>40+</h5>
+                             <h5>50+</h5>
                              <span class="d-block">Today Sales</span>
                          </div>
-
                      </div>
                  </div>
+
                  <div class="col-6 col-lg-3 mb-3 px-2">
                      <div class="countsec h-100 bg-white">
                          <div class="countsecimg">
@@ -43,6 +47,7 @@
 
                      </div>
                  </div>
+
                  <div class="col-6 col-lg-3 mb-3 px-2">
                      <div class="countsec h-100 bg-white">
                          <div class="countsecimg">
@@ -61,6 +66,7 @@
 
                      </div>
                  </div>
+
                  <div class="col-6 col-lg-3 mb-3 px-2">
                      <div class="countsec h-100 bg-white">
                          <div class="countsecimg">
@@ -75,13 +81,16 @@
 
                      </div>
                  </div>
-
              </div>
-
          </div>
+         <!-- ================================ -->
+         <!-- Summary Card Listing Section End -->
+         <!-- ================================ -->
 
-         <!-- Bar chart  -->
 
+         <!-- ================================ -->
+         <!-- Bar Charts Listing Section Start -->
+         <!-- ================================ -->
          <div class="row row5">
              <div class="col-md-6 px-2 mb-3">
                  <div class="customrounded bg-white">
@@ -95,13 +104,34 @@
                  </div>
              </div>
          </div>
+         <!-- ============================== -->
+         <!-- Bar Charts Listing Section End -->
+         <!-- ============================== -->
 
-         <div class="">
 
+         <!-- ==================================== -->
+         <!-- Orders Details Listing Section Start -->
+         <!-- ==================================== -->
+         <div class="row row5">
+             <div class="col-md-6 px-2 mb-3">
+                 <div class="customrounded bg-white">
+                     <canvas id="barChart"></canvas>
+                 </div>
+             </div>
+
+             <div class="col-md-6 px-2 mb-3 Showdesktop">
+                 <div class="customrounded bg-white">
+                     <canvas id="barChart2"></canvas>
+                 </div>
+             </div>
          </div>
+         <!-- ================================== -->
+         <!-- Orders Details Listing Section End -->
+         <!-- ================================== -->
+
+         <div class=""></div>
 
          <ul class="primary-menu dashmnu mnuaccordion" id="mnuaccordionM">
-
              <li>
                  <a class="collapsed hassub" data-toggle="collapse" data-parent="#mnuaccordionM" href="#hassuborderM">
                      <i><img src="<?= base_url() ?>assets/images/Orders.svg" alt=""></i>
@@ -131,7 +161,6 @@
                  </div>
              </li>
 
-
              <li>
                  <a href="" data-toggle="modal" data-target="#addprodcat" class="mob-v">
                      <i><img src="<?= base_url() ?>assets/images/Add-Products-Express.svg" alt=""></i>
@@ -160,15 +189,13 @@
                  </a>
              </li>
 
-
-
-
              <li>
                  <a href="#">
                      <i><img src="<?= base_url() ?>assets/images/Offer-Announcement.svg" alt=""></i>
                      Offer Announcement
                  </a>
              </li>
+
              <li>
                  <a href="#">
                      <i><img src="<?= base_url() ?>assets/images/Start-Marketing.svg" alt=""></i>
@@ -176,7 +203,10 @@
                  </a>
              </li>
          </ul>
-         <div class="notifi text-center p-2 text-white bg-danger mt-5"><small>Your Account is Under Verifications Process.</small></div>
+
+         <div class="notifi text-center p-2 text-white bg-danger mt-5">
+            <small>Your Account is Under Verifications Process.</small>
+         </div>
      </div>
  </div>
  </div>

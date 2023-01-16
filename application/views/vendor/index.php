@@ -10,7 +10,7 @@
                         <input type="tel" class="form-control" placeholder="Enter Your Mobile Number" id="mobile">
 
                         <div class="input-group-append">
-                            <!-- <a href="<?= base_url('Vendor/view_registration') ?>"> -->
+                            <!-- <a href="<?= base_url('vendor/signup') ?>"> -->
 
                             <button class="btn" type="button" id="btn_start">Start Selling</button>
                             <!-- </a> -->
