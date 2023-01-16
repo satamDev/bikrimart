@@ -372,7 +372,7 @@ class Customer_model extends CI_Model
 
     public function get_cart_product_detail($product_id)
     {
-        $this->db->select('p.sale_price, p.weight, p.vendor_id, p.discount, p.uid as pid, m.name, ul.short_name as unit_name, pi.path, ');
+        $this->db->select('p.sale_price, p.weight, p.vendor_id, p.discount, p.uid as pid, m.name, ul.short_name as unit_name, pi.path, p.brand_id');
         $this->db->from('products as p');
         $this->db->join('products_all_master as m', 'm.uid = p.master_product_id');
         $this->db->join('unit_lists as ul', 'ul.uid = p.product_unit_id');

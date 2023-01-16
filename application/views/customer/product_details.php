@@ -544,7 +544,7 @@
                                     <i class="fas fa-minus"></i>
                                 </button>
 
-                                <input type="text" name="dprcrt1" value="0" class="text-center product_details_qty product_qty <?= "quantity_" . $product_details['product_id'] ?>" disabled>
+                                <input type="text" name="dprcrt1" value="0" class="text-center  product_qty <?= "quantity_" . $product_details['product_id'] ?>" id="product_details_qty" disabled>
 
                                 <button class="qtyboxbtn" type="button" id="product_detail_inc_btn" onclick="inc(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')">
                                     <i class="fas fa-plus"></i>

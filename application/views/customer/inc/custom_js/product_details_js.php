@@ -1,25 +1,8 @@
 <script>
 
-    $(document).ready(function(){
-        let pro_details_qty = $('.product_details_qty').val();
-        console.log(pro_details_qty);
-
-        if ( pro_details_qty == '0') {
-            $('#product_detail_dec_btn').attr('disabled', 'disabled');
-        }
-    });
-
-
-    $('#product_detail_dec_btn').click(function() {
-        if ($('.product_details_qty').val() == 0) {
-            $('#product_detail_dec_btn').attr('disabled', 'disabled');
-            console.log('disabled');
-
-        }
-    });
-
     $('#product_detail_inc_btn').click(function() {
         $('#product_detail_dec_btn').attr('disabled', false);
+
     });
 
 
@@ -44,7 +27,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url('customer/add_product_to_cart') ?>",
+            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/add_product_to_cart') ?>",
             data: {
                 "qty": product_qty,
                 "product_id": product_id,
@@ -74,14 +57,12 @@
     }
 
     function change_vendor_of_selected_product(selected_vendor_id, master_id) {
-        // console.log(master_id);
-        // console.log(selected_vendor_id);
 
         $('#checked_vendor_id').val(selected_vendor_id);
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(PANEL_CUSTOMER . '/get_product_details_by_vendor_id') ?>",
+            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Product_Api/get_product_details_by_vendor_id') ?>",
             data: {
                 "master_id": master_id,
                 "vendor_id": selected_vendor_id
@@ -91,7 +72,6 @@
             },
             success: function(response) {
                 let product_id = response.data;
-                $('#checked_product_id').val(product_id);
                 window.location = `<?= base_url('products/') ?>${product_id}`;
             }
         });

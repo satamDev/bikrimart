@@ -122,6 +122,19 @@ class Product_Api extends CI_Controller
         }
     }
 
+    public function get_product_details_by_vendor_id(){
+        $master_id = $this->input->post('master_id');
+        $vendor_id = $this->input->post('vendor_id');
+        $this->init_customer_model();
+        $data = $this->Customer_model->get_product_details_by_vendor_id($vendor_id, $master_id);
+        if(!empty($data)){
+            $this->response(["success" => true, "message" => "found", "data" => $data], 200);
+        }
+        else{
+            $this->response(["success" => false, "message" => "not found"], 200);
+        }
+    }
+
 
 
 }
