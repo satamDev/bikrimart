@@ -14,6 +14,10 @@ class Product_Api extends CI_Controller
     {
         $this->load->model('Customer/Customer_model');
     }
+    private function init_product_model()
+    {
+        $this->load->model('Customer/Product_model');
+    }
 
     private function init_uid_server_model()
     {
@@ -135,6 +139,26 @@ class Product_Api extends CI_Controller
         }
     }
 
+    public function getData(){
+        $this->init_customer_model();
+        $select=["id", "master_id"];
+        $condition=["mobile"=>'8017454808'];
+        $data = $this->Customer_model->getData($select, $condition);
+        echo"<pre>";
+        print_r($data);
+    }
+
+    public function get_quantity_of_product_in_cart(){
+        $this->init_product_model();
+        $product_id = $this->input->post(param_id);
+        $data = $this->Product_model->get_quantity_of_product_in_cart($product_id);
+        if(!empty($data)){
+            $this->response(["success" => true, "message" => "found", "data" => $data], 200);
+        }
+        else{
+            $this->response(["success" => false, "message" => "not found"], 200);
+        }
+    }
 
 
 }

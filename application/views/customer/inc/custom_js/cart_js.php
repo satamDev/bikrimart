@@ -109,7 +109,7 @@
                                                         <button class="qty">
                                                             <div onclick="dec(this, '${data.sale_price}', '${data.product_id}', '${data.master_id}', '${data.vendor_id}', '${data.brand_id}')"> <i class="fas fa-minus"></i></div>
                                                         </button>
-                                                        <input name="qtydesk1" type="text" value="0" class="productQty quantity_${data.product_id}" disabled>
+                                                        <input name="qtydesk1" type="text" value="0" class="quantity_${data.product_id}" disabled>
                                                         <button class="qty">
                                                             <div onclick="inc(this, '${data.sale_price}', '${data.product_id}', '${data.master_id}', '${data.vendor_id}', '${data.brand_id}')"><i class="fas fa-plus"></i></div>
                                                         </button>
@@ -484,7 +484,7 @@
                                                     <button class="qtyboxbtn dec_cart_btn_${detail[i].pid}" type="button" onclick="dec(this, '${detail[i].sale_price}', '${detail[i].pid}', '${data.product_id}', '${detail[i].vendor_id}', '${detail[i].brand_id}')" ${btn_disabled}>
                                                         <i class="fas fa-minus"></i>
                                                     </button>
-                                                    <input type="text" value="${data.product_qty}" class="text-center quantity_${detail[i].pid}">
+                                                    <input type="text" value="${data.product_qty}" class="text-center  quantity_${detail[i].pid}">
 
                                                     <button class="qtyboxbtn" type="button" onclick="inc(this, '${detail[i].sale_price}', '${detail[i].pid}', '${data.product_id}', '${detail[i].vendor_id}', '${detail[i].brand_id}')">
                                                         <i class="fas fa-plus"></i>

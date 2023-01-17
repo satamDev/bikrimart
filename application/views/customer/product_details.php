@@ -538,6 +538,7 @@
 
                     <div class="gpdtailsbtns d-flex align-items-center">
                         <div class="sh-desktop">
+                            <input type="hidden" value="<?= $product_details['product_id'] ?>" id="details_product_id">
                             <div class="d-flex qtybox text-center mr-3">
 
                                 <button class="qtyboxbtn border-right" id="product_detail_dec_btn" onclick="dec(this, '<?= $product_details['sale_price'] ?>', '<?= $product_details['product_id'] ?>', '<?= $product_details['master_id'] ?>', '<?= $product_details['vendor_id'] ?>', '<?= $product_details['brand_id'] ?>')">
@@ -681,9 +682,6 @@
 
         </div>
     </div>
-
-
-
 
 
     <!-- <footer class="footerMobile">

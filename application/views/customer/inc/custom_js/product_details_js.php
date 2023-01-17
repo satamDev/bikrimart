@@ -5,6 +5,7 @@
 
     });
 
+    var product_id = $('#details_product_id').val();
 
     function buy_now(element, sale_price, product_id, master_id, vendor_id, brand_id) {
 
@@ -76,4 +77,24 @@
             }
         });
     }
+
+    $.ajax({
+        type:"POST",
+        url:"<?=base_url(WEB_PANEL_CUSTOMER.'Product_Api/get_quantity_of_product_in_cart')?>",
+        data:{
+            "id":product_id
+        },
+        error:function(response){
+            console.log(response);
+        },
+        success:function(response){
+            if(response.success){
+                let product_qty = response.data;
+                // console.log(product_qty);
+            }
+            else{
+                $('#product_detail_dec_btn').attr('disabled', 'disabled');
+            }
+        }
+    })
 </script>
