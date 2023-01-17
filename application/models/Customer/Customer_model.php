@@ -372,6 +372,7 @@ class Customer_model extends CI_Model
     public function get_cart_product_detail($product_id)
     {
         $this->db->select('p.sale_price, p.weight, p.vendor_id, p.discount, p.uid as pid, m.name, ul.short_name as unit_name, pi.path, p.brand_id');
+
         $this->db->from('products as p');
         $this->db->join('products_all_master as m', 'm.uid = p.master_product_id');
         $this->db->join('unit_lists as ul', 'ul.uid = p.product_unit_id');
@@ -496,8 +497,7 @@ class Customer_model extends CI_Model
             $query[$i]['path'] = $this->get_product_image($product_id);
         }
 
-        // return (!empty($query)) ? $query : [];
-        return (!empty($query)) ? $query[0] : [];
+        return (!empty($query)) ? $query : [];
     }
 
     public function display_product_image($product_id)
@@ -540,6 +540,9 @@ class Customer_model extends CI_Model
         }
         return (!empty($query)) ? $query : [];
     }
+
+
+
 
 
     public function save_user_address($address_id, $customer_id, $address, $lat, $lng)
@@ -784,4 +787,5 @@ class Customer_model extends CI_Model
         $query = $query->result_array();
         return(!empty($query))? true : false;
     }
+
 }

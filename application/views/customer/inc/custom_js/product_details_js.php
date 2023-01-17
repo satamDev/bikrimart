@@ -1,5 +1,14 @@
 <script>
 
+
+    $('#product_detail_dec_btn').click(function() {
+        let qty = $('.product_qty').val();
+        let product_qty = 0;
+        if (qty == 0) {
+            $('#product_detail_dec_btn').attr('disabled', 'disabled');
+        }
+    });
+
     $('#product_detail_inc_btn').click(function() {
         $('#product_detail_dec_btn').attr('disabled', false);
 
@@ -34,7 +43,7 @@
                 "product_id": product_id,
                 "master_id": master_id,
                 "vendor_id": vendor_id,
-                "brand_id": brand_id,
+                "brand_id":brand_id,
                 "session_id": session_id,
             },
             error: function(response) {
@@ -46,7 +55,6 @@
                     remember_user_session_id(session_id);
                     display_cart_items();
                     display_product_price();
-                    display_delivery_charges();
                     $('#cartlistfxd').modal('show');
                 }
             }
@@ -58,9 +66,6 @@
     }
 
     function change_vendor_of_selected_product(selected_vendor_id, master_id) {
-
-        $('#checked_vendor_id').val(selected_vendor_id);
-
         $.ajax({
             type: "POST",
             url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Product_Api/get_product_details_by_vendor_id') ?>",

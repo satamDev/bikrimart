@@ -237,9 +237,3 @@ define('query_param_sort_dir', 'sortDir');
 define('query_param_vendor_id', 'vendorId');
 
 define('const_rupee_symbol', '₹');
-define('const_page_size', '10');
-define('const_page_no', '0');
-define('const_opening_stock_max_limit', '15');
-define('const_opening_stock_min_limit', '0');
-
-define('WEB_PANEL_CUSTOMER', 'Frontend/Api/');

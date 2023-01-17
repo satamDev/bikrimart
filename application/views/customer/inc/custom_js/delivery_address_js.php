@@ -8,7 +8,7 @@
 
     $.ajax({
         type: "GET",
-        url: "<?= base_url(WEB_PANEL_CUSTOMER.'Address_Api/get_customer_address') ?>",
+        url: "<?= base_url('customer/get_customer_address') ?>",
         error: function(response) {
             console.log(response);
         },
@@ -25,13 +25,8 @@
                 $('#text_address').html(data.address).addClass('title');
                 $('#txt_address').val(data.address).addClass('title');
                 $('#txt_pincode').val(data.pincode);
-                if(data.lat=='' && data.lng==''){
-                    initMap(22.5726, 88.3639);
 
-                }
-                else{
-                    initMap(data.lat, data.lng);
-                }
+                initMap(data.lat, data.lng);
 
             } else {
                 $('#text_main_address').html("Not Found");
@@ -50,7 +45,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER.'Address_Api/add_deliver_address') ?>",
+            url: "<?= base_url('customer/add_deliver_address') ?>",
             data: {
                 "address": address,
                 'lat': lat,
@@ -81,7 +76,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER.'Address_Api/ ') ?>",
+            url: "<?= base_url('customer/save_detail_deliver_address') ?>",
             data: formData,
             contentType: false,
             processData: false,
@@ -103,7 +98,7 @@
 
     $.ajax({
         type: "POST",
-        url: "<?= base_url(WEB_PANEL_CUSTOMER.'Address_Api/get_detail_user_address') ?>",
+        url: "<?= base_url('customer/get_detail_user_address') ?>",
         error: function(response) {
             console.log(response);
         },
@@ -124,6 +119,9 @@
                 $('#pincode').val(data.pincode);
                 $("textarea").text(data.extra_detail).addClass('title');
                 $('input:radio[name=address_type]').val([data.address_type]);
+
+
+
 
             } else {
                 $('#detail_main_address').html("Not Available");
@@ -185,4 +183,5 @@
     }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= const_google_api_key ?>&callback=initMap" async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=<?= const_google_api_key ?>&callback=initMap" async defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= const_google_api_key ?>"></script>

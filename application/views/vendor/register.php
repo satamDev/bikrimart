@@ -495,6 +495,75 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!-- <div class="form-group mb-2">
+                                                    <label>Business Address</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 30.23 30.23">
+                                                                    <g id="Icons" transform="translate(5 2)">
+                                                                        <g id="Rounded" transform="translate(-5 -2)">
+                                                                            <g id="Maps">
+                                                                                <g id="_-Round-_-Maps-_-place"
+                                                                                    data-name="-Round-/-Maps-/-place">
+                                                                                    <g id="Group_6" data-name="Group 6">
+                                                                                        <path id="Path"
+                                                                                            d="M0,0H30.23V30.23H0Z"
+                                                                                            fill="none"
+                                                                                            fill-rule="evenodd" />
+                                                                                        <path id="_-Icon-Color"
+                                                                                            data-name="🔹-Icon-Color"
+                                                                                            d="M13.817,2A8.811,8.811,0,0,0,5,10.817c0,5.252,5.567,12.5,7.86,15.254a1.251,1.251,0,0,0,1.927,0c2.28-2.758,7.847-10,7.847-15.254A8.811,8.811,0,0,0,13.817,2Zm0,11.966a3.149,3.149,0,1,1,3.149-3.149A3.15,3.15,0,0,1,13.817,13.966Z"
+                                                                                            transform="translate(1.298 0.519)"
+                                                                                            fill="#a8a8a8"
+                                                                                            fill-rule="evenodd" />
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </svg>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Flat/ Building Number">
+                                                    </div>
+                                                    </div> -->
+                                                    <!-- <div class="form-group mb-3">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 30.23 30.23">
+                                                                        <g id="Icons" transform="translate(5 2)">
+                                                                            <g id="Rounded" transform="translate(-5 -2)">
+                                                                                <g id="Maps">
+                                                                                    <g id="_-Round-_-Maps-_-place"
+                                                                                        data-name="-Round-/-Maps-/-place">
+                                                                                        <g id="Group_6" data-name="Group 6">
+                                                                                            <path id="Path"
+                                                                                                d="M0,0H30.23V30.23H0Z"
+                                                                                                fill="none"
+                                                                                                fill-rule="evenodd" />
+                                                                                            <path id="_-Icon-Color"
+                                                                                                data-name="🔹-Icon-Color"
+                                                                                                d="M13.817,2A8.811,8.811,0,0,0,5,10.817c0,5.252,5.567,12.5,7.86,15.254a1.251,1.251,0,0,0,1.927,0c2.28-2.758,7.847-10,7.847-15.254A8.811,8.811,0,0,0,13.817,2Zm0,11.966a3.149,3.149,0,1,1,3.149-3.149A3.15,3.15,0,0,1,13.817,13.966Z"
+                                                                                                transform="translate(1.298 0.519)"
+                                                                                                fill="#a8a8a8"
+                                                                                                fill-rule="evenodd" />
+                                                                                        </g>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Area / Locality, City">
+                                                        </div>
+                                                    </div> -->
                                                     <div class="form-group mb-3">
                                                         <label>Email ID (Optional)</label>
                                                         <div class="input-group">
@@ -508,54 +577,6 @@
                                                             <input type="email" class="form-control" placeholder="Enter Email ID" name="bussiness_email">
                                                         </div>
                                                     </div>
-                                                    <div class="form-group mb-2">
-                                                        <label>Business Address</label>
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30.23 30.23">
-                                                                        <g id="Icons" transform="translate(5 2)">
-                                                                            <g id="Rounded" transform="translate(-5 -2)">
-                                                                                <g id="Maps">
-                                                                                    <g id="_-Round-_-Maps-_-place" data-name="-Round-/-Maps-/-place">
-                                                                                        <g id="Group_6" data-name="Group 6">
-                                                                                            <path id="Path" d="M0,0H30.23V30.23H0Z" fill="none" fill-rule="evenodd" />
-                                                                                            <path id="_-Icon-Color" data-name="🔹-Icon-Color" d="M13.817,2A8.811,8.811,0,0,0,5,10.817c0,5.252,5.567,12.5,7.86,15.254a1.251,1.251,0,0,0,1.927,0c2.28-2.758,7.847-10,7.847-15.254A8.811,8.811,0,0,0,13.817,2Zm0,11.966a3.149,3.149,0,1,1,3.149-3.149A3.15,3.15,0,0,1,13.817,13.966Z" transform="translate(1.298 0.519)" fill="#a8a8a8" fill-rule="evenodd" />
-                                                                                        </g>
-                                                                                    </g>
-                                                                                </g>
-                                                                            </g>
-                                                                        </g>
-                                                                    </svg>
-                                                                </span>
-                                                            </div>
-                                                            <input type="text" class="form-control" placeholder="Flat/ Building Number" name="building">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 30.23 30.23">
-                                                                        <g id="Icons" transform="translate(5 2)">
-                                                                            <g id="Rounded" transform="translate(-5 -2)">
-                                                                                <g id="Maps">
-                                                                                    <g id="_-Round-_-Maps-_-place" data-name="-Round-/-Maps-/-place">
-                                                                                        <g id="Group_6" data-name="Group 6">
-                                                                                            <path id="Path" d="M0,0H30.23V30.23H0Z" fill="none" fill-rule="evenodd" />
-                                                                                            <path id="_-Icon-Color" data-name="🔹-Icon-Color" d="M13.817,2A8.811,8.811,0,0,0,5,10.817c0,5.252,5.567,12.5,7.86,15.254a1.251,1.251,0,0,0,1.927,0c2.28-2.758,7.847-10,7.847-15.254A8.811,8.811,0,0,0,13.817,2Zm0,11.966a3.149,3.149,0,1,1,3.149-3.149A3.15,3.15,0,0,1,13.817,13.966Z" transform="translate(1.298 0.519)" fill="#a8a8a8" fill-rule="evenodd" />
-                                                                                        </g>
-                                                                                    </g>
-                                                                                </g>
-                                                                            </g>
-                                                                        </g>
-                                                                    </svg>
-                                                                </span>
-                                                            </div>
-                                                            <input type="text" class="form-control" placeholder="Area / Locality, City" name="address">
-                                                        </div>
-                                                    </div>
-
                                                     <div class="form-group ">
                                                         <label>Business KYC</label>
                                                         <div class="input-group">

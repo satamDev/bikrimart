@@ -2,7 +2,7 @@
     function get_vendor_list(category_id) {
         $.ajax({
             type: "POST",
-            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Product_Api/get_all_vendor_list') ?>",
+            url: "<?= base_url(PANEL_CUSTOMER . '/get_all_vendor_list') ?>",
             data: {
                 "id": category_id
             },
@@ -10,7 +10,7 @@
                 console.log(response);
             },
             success: function(response) {
-                // console.log(response);
+                console.log(response);
                 if (category_id == 'Kirana') {
                     $('.category').text('Groceries');
 
@@ -69,7 +69,7 @@
     }
 
 
-
+   
 
 
     // function get_vendor_product_list(vendor_id, store_name, address) {
