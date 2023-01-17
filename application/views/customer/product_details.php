@@ -537,13 +537,16 @@
 
                     <div class="gpdtailsbtns d-flex align-items-center">
                         <div class="sh-desktop">
+                            <input type="hidden" value="<?= $product_details['product_id'] ?>" id="details_product_id">
                             <div class="d-flex qtybox text-center mr-3">
 
                                 <button class="qtyboxbtn border-right" id="product_detail_dec_btn" onclick="dec(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')">
                                     <i class="fas fa-minus"></i>
                                 </button>
 
-                                <input type="text" name="dprcrt1" value="0" class="text-center product_qty <?= "quantity_" . $product['product_id'] ?>" disabled>
+
+                                <input type="text" name="dprcrt1" value="0" class="text-center  product_qty <?= "quantity_" . $product_details['product_id'] ?>" id="product_details_qty" disabled>
+
 
                                 <button class="qtyboxbtn" type="button" id="product_detail_inc_btn" onclick="inc(this, '<?= $product['sale_price'] ?>', '<?= $product['product_id'] ?>', '<?= $product['master_id'] ?>', '<?= $product['vendor_id'] ?>', '<?= $product['brand_id'] ?>')">
                                     <i class="fas fa-plus"></i>
@@ -683,9 +686,6 @@
 
         </div>
     </div>
-
-
-
 
 
     <!-- <footer class="footerMobile">

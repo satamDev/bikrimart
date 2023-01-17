@@ -107,7 +107,7 @@
                                                         <button class="qty">
                                                             <div onclick="dec(this, '${data.sale_price}', '${data.product_id}', '${data.master_id}', '${data.vendor_id}', '${data.brand_id}')"> <i class="fas fa-minus"></i></div>
                                                         </button>
-                                                        <input name="qtydesk1" type="text" value="1" class="quantity_${data.product_id}" disabled>
+                                                        <input name="qtydesk1" type="text" value="0" class="quantity_${data.product_id}" disabled>
                                                         <button class="qty">
                                                             <div onclick="inc(this, '${data.sale_price}', '${data.product_id}', '${data.master_id}', '${data.vendor_id}', '${data.brand_id}')"><i class="fas fa-plus"></i></div>
                                                         </button>
@@ -141,7 +141,7 @@
     function add_to_bag(btn, sale_price, product_id, master_id, vendor_id, brand_id) {
 
         var product_qty = 1;
-        // var product_qty = $('.quantity_' + product_id).val();
+        $('.quantity_' + product_id).val('1');
 
         btn = $(btn);
         btn.addClass('loader');
@@ -186,6 +186,7 @@
                 console.log(response);
             },
             success: function(response) {
+                // console.log(response);
                 if (response.success) {
                     var session_id = response.data;
                     remember_user_session_id(session_id);
@@ -193,6 +194,7 @@
                     display_product_price();
                     display_delivery_charges();
                     display_cart_items();
+                    
 
                     // Mobile View //
                     display_cart_items_mobile();
@@ -211,6 +213,8 @@
         let quantity = $('.quantity_' + product_id).val();
         let product_qty = parseInt(quantity) + 1;
         $('.quantity_' + product_id).val(parseInt(quantity) + 1);
+        $('#product_details_qty').val(parseInt(quantity) + 1);
+
         add_product_to_cart(product_qty, product_id, master_id, vendor_id, brand_id);
     }
 
@@ -221,8 +225,11 @@
         if (product_qty == 0) {
             $('.default_btn_' + product_id).removeClass('bought');
             delete_product(product_id, vendor_id);
+            $('#product_detail_dec_btn').attr('disabled', 'disabled');
+
         } else {
             $('.quantity_' + product_id).val(parseInt(quantity) - 1);
+            $('#product_details_qty').val(parseInt(quantity) - 1);
             add_product_to_cart(product_qty, product_id, master_id, vendor_id, brand_id);
         }
     }
@@ -315,8 +322,18 @@
             },
             success: function(response) {
                 // console.log(response);
-                var data = response.data;
-                $.each(data, function(i, data) {
+                if (response.success) {
+                    let data = response.data;
+                    $.each(data, function(i, data) {
+
+                        $('.default_btn_' + data.product_id).addClass('bought');
+                        $('.quantity_' + data.product_id).val(data.product_qty);
+                        $('.mobile_quantity_' + data.product_id).val(data.product_qty);
+                    });
+                } else {
+                    $('.productQty').val(1);
+                }
+
 
                     $('.default_btn_' + data.product_id).addClass('bought');
 
@@ -474,12 +491,12 @@
                                             <div class="ml-auto">
                                                 <div class="d-flex qtybox text-center">
 
-                                                    <button class="qtyboxbtn dec_cart_btn_${detail[i].pid}" type="button" onclick="dec(this, '${detail[i].sale_price}', '${detail[i].pid}', '${data.product_id}', '${detail[i].vendor_id}')" ${btn_disabled}>
+                                                    <button class="qtyboxbtn dec_cart_btn_${detail[i].pid}" type="button" onclick="dec(this, '${detail[i].sale_price}', '${detail[i].pid}', '${data.product_id}', '${detail[i].vendor_id}', '${detail[i].brand_id}')" ${btn_disabled}>
                                                         <i class="fas fa-minus"></i>
                                                     </button>
-                                                    <input type="text" value="${data.product_qty}" class="text-center quantity_${detail[i].pid}">
+                                                    <input type="text" value="${data.product_qty}" class="text-center  quantity_${detail[i].pid}">
 
-                                                    <button class="qtyboxbtn" type="button" onclick="inc(this, '${detail[i].sale_price}', '${detail[i].pid}', '${data.product_id}', '${detail[i].vendor_id}')">
+                                                    <button class="qtyboxbtn" type="button" onclick="inc(this, '${detail[i].sale_price}', '${detail[i].pid}', '${data.product_id}', '${detail[i].vendor_id}', '${detail[i].brand_id}')">
                                                         <i class="fas fa-plus"></i>
                                                     </button>
 

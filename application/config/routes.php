@@ -263,4 +263,3 @@ $route['update_bank_details'] = 'Frontend/Vendor/Apiupdate_bank_details';
 
 
 
-

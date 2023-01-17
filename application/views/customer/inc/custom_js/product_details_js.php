@@ -1,5 +1,6 @@
 <script>
 
+
     $('#product_detail_dec_btn').click(function() {
         let qty = $('.product_qty').val();
         let product_qty = 0;
@@ -10,8 +11,10 @@
 
     $('#product_detail_inc_btn').click(function() {
         $('#product_detail_dec_btn').attr('disabled', false);
+
     });
 
+    var product_id = $('#details_product_id').val();
 
     function buy_now(element, sale_price, product_id, master_id, vendor_id, brand_id) {
 
@@ -34,7 +37,7 @@
 
         $.ajax({
             type: "POST",
-            url: "<?= base_url('customer/add_product_to_cart') ?>",
+            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Cart_Api/add_product_to_cart') ?>",
             data: {
                 "qty": product_qty,
                 "product_id": product_id,
@@ -62,14 +65,41 @@
         localStorage.setItem("session_id", session_id);
     }
 
-    function change_vendor_of_selected_product(selected_vendor_id, master_id){
-        console.log(master_id);
-        let vendor_id = 'VENDOR_'+selected_vendor_id;
-        $('#checked_vendor_id').val(vendor_id);
+    function change_vendor_of_selected_product(selected_vendor_id, master_id) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url(WEB_PANEL_CUSTOMER . 'Product_Api/get_product_details_by_vendor_id') ?>",
+            data: {
+                "master_id": master_id,
+                "vendor_id": selected_vendor_id
+            },
+            error: function(response) {
+                console.log(response);
+            },
+            success: function(response) {
+                let product_id = response.data;
+                window.location = `<?= base_url('products/') ?>${product_id}`;
+            }
+        });
     }
 
-
-
-    
-
+    $.ajax({
+        type:"POST",
+        url:"<?=base_url(WEB_PANEL_CUSTOMER.'Product_Api/get_quantity_of_product_in_cart')?>",
+        data:{
+            "id":product_id
+        },
+        error:function(response){
+            console.log(response);
+        },
+        success:function(response){
+            if(response.success){
+                let product_qty = response.data;
+                // console.log(product_qty);
+            }
+            else{
+                $('#product_detail_dec_btn').attr('disabled', 'disabled');
+            }
+        }
+    })
 </script>
