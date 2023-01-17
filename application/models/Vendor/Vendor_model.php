@@ -24,6 +24,14 @@ class Vendor_model extends CI_Model
         $query = $query->result_array();
         return (!empty($query)) ? $query[0][field_created_at] : null;
     }
+    public function get_previous_otp_details($user_id)
+    {
+        $this->db->select("*");
+        $this->db->where(field_user_id, $user_id);
+        $query = $this->db->get(table_otp_list);
+        $query = $query->result();
+        return (!empty($query)) ? $query[0] : null;
+    }
     public function set_otp($user_id, $token, $otp, $otp_created_at)
     {
         // $this->db->select(field_value);

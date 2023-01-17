@@ -1,5 +1,5 @@
 <?php defined("BASEPATH") or exit("No direct script access allowed");
-include_once(APPPATH."controllers/Frontend/Vendor/Common.php");
+include_once(APPPATH."controllers/Vendor/Common.php");
 
 class Inventory_Api extends Common {
 

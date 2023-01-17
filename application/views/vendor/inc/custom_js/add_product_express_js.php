@@ -63,7 +63,7 @@
 
     $.ajax({
         type: "POST",
-        url: "<?= base_url('vendor/get_products_from_master_table') ?>",
+        url: "<?= base_url('get_products_from_master_table') ?>",
         error: function(response) {
             console.log(response);
         },

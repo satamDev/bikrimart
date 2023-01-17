@@ -5454,7 +5454,7 @@
         $("#chartContainer").CanvasJSChart(options);
     }
 
-    $('#neworderstable').dataTable();
+    // $('#neworderstable').dataTable();
 
     function openPopup() {
         $('#addnewunit').modal('show');

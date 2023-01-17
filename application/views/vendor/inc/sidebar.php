@@ -301,7 +301,7 @@
                     </li>
                     -->
                     <li>
-                        <a href="<?=base_url('Vendor/logout')?>">
+                        <a href="<?=base_url('vendor/logout')?>">
                             <i><img src="<?= base_url() ?>assets/images/Settings.svg" alt=""></i>
                             Logout
                         </a>

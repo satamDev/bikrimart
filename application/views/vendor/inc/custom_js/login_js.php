@@ -12,7 +12,7 @@
     if (flag == 0) {
       $.ajax({
         type: "POST",
-        url: "<?= base_url('Vendor/send_otp_for_login') ?>",
+        url: "<?= base_url(VENDOR_API_URL_PREFIX.'Login_Api/send_otp_for_login') ?>",
         data: {
           "mobile": mobile
         },
@@ -38,7 +38,7 @@
     let mobile = $("#mobile").val();
     $.ajax({
       type: "POST",
-      url: "<?= base_url('vendor/send_otp_for_login') ?>",
+      url: "<?= base_url(VENDOR_API_URL_PREFIX.'Login_Api/send_otp_for_login') ?>",
       data: {
         "mobile": mobile
       },
@@ -68,7 +68,7 @@
 
     $.ajax({
       type: "POST",
-      url: "<?= base_url('Vendor/authenticate_user') ?>",
+      url: "<?= base_url(VENDOR_API_URL_PREFIX.'Login_Api/authenticate_user') ?>",
       data: {
         "mobile": mobile,
         "otp": otp
@@ -78,7 +78,6 @@
       },
       success: function(response) {
         if (response.success) {
-          console.log(response);
           location.href = response.redirect;
         } else {
           toast(response.message);

@@ -1,5 +1,5 @@
 <?php define("BASEPATH") or exit("No direct script access allowed");
-inlcude_once(APPPATH."controllers/Frontend/Vendor/Common.php");
+inlcude_once(APPPATH."controllers/Vendor/Common.php");
 
 class Store_Api extends Common {
 

@@ -83,7 +83,7 @@
 		if (product_id == '') {
 			$.ajax({
 				type: "POST",
-				url: "<?= base_url('Vendor/add_product_data') ?>", // Vendor/add_product_data_for_first_time
+				url: "<?= base_url(VENDOR_API_URL_PREFIX.'Product_Api/add_product_data') ?>", // Vendor/add_product_data_for_first_time
 				data: form_data,
 				contentType: false,
 				processData: false,
@@ -225,7 +225,7 @@
 
 			$.ajax({
 				type: "POST",
-				url: "<?= base_url('Vendor/add_product_data') ?>", // Vendor/add_product_data_for_first_time
+				url: "<?= base_url(VENDOR_API_URL_PREFIX.'Product_Api/add_product_data') ?>", // Vendor/add_product_data_for_first_time
 				data: form_data,
 				contentType: false,
 				processData: false,

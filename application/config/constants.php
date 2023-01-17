@@ -237,3 +237,22 @@ define('query_param_sort_dir', 'sortDir');
 define('query_param_vendor_id', 'vendorId');
 
 define('const_rupee_symbol', '₹');
+define('const_page_size', '10');
+define('const_page_no', '0');
+define('const_opening_stock_max_limit', '15');
+define('const_opening_stock_min_limit', '0');
+
+define('WEB_PANEL_CUSTOMER', 'Frontend/Api/');
+define('validation_time_of_otp_in_minutes', '15');
+define('VENDOR_API_URL_PREFIX', 'Vendor/Api/');
+////////////////////////////////////////////////////////////////////////////////
+define('DATATYPE_STRING', 'string');
+define('DATATYPE_ARRAY', 'array');
+
+define('HAS_CONSTANT', 'has_constant');
+define('CONSTANT_VALUES', 'values');
+
+define('CONDITION_OPERATOR', 'operator');
+define('CONDITION_VALUE', 'value');
+
+define('ALL_FIELDS', 'all');

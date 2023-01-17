@@ -1,5 +1,5 @@
 <?php defined("BASEPATH") or exit("No direct script access allowed");
-include_once(APPPATH."controllers/Frontend/Vendor/Common.php");
+include_once(APPPATH."controllers/Vendor/Common.php");
 
 class Login extends Common {
 
@@ -11,7 +11,7 @@ class Login extends Common {
     public function index()
     {
         if ($this->is_user_logged_in()) {
-            redirect('Vendor/view_dashboard');
+            redirect('vendor/dashboard');
         } else {
             $this->load->view('vendor/inc/header_link');
             $this->load->view('vendor/login');

@@ -1,5 +1,5 @@
 <?php defined("BASEPATH") or exit("No direct script access allowed");
-include_once(APPPATH."controllers/Frontend/Vendor/Common.php");
+include_once(APPPATH."controllers/Vendor/Common.php");
 
 class Product extends Common {
 
@@ -19,7 +19,7 @@ class Product extends Common {
             $this->load->view('vendor/inc/custom_js/products_js');
             $this->load->view('vendor/inc/custom_js/global_js');
         } else {
-            redirect(base_url('vendor/view_login'));
+            redirect(base_url('vendor/login'));
         }
     }
 
@@ -35,7 +35,7 @@ class Product extends Common {
             // $this->load->view('vendor/inc/custom_js/regular_js');
             $this->load->view('vendor/inc/custom_js/image_uploader_js');
         } else {
-            redirect(base_url('vendor/view_login'));
+            redirect(base_url('vendor/login'));
         }
     }
 
@@ -49,7 +49,7 @@ class Product extends Common {
             $this->load->view('vendor/inc/footer_link');
             $this->load->view('vendor/inc/custom_js/product_list_js');
         } else {
-            redirect(base_url('vendor/view_login'));
+            redirect(base_url('vendor/login'));
         }
     }
 }

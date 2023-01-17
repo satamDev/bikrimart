@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center mb-4">
             <h1 class="h4">Products</h1>
             <div class="ml-auto">
-                <a href="<?= base_url('vendor/view_add_products') ?>" class="btn btn-dark">
+                <a href="<?= base_url('vendor/product/add') ?>" class="btn btn-dark">
                     Add Product
                 </a>
                 <a href="" class="btn btn-success">

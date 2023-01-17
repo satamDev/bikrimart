@@ -1105,7 +1105,7 @@ class Vendor extends CI_Controller
                 $this->session->set_userdata(field_name, $user_details->name);
                 $this->response(['success' => true, 'message' => 'Login successfull', 'redirect' => base_url('vendor/dashboard')], 200);
             } else {
-                $this->response(['success' => false, 'message' => 'Invaild  OTP!'], 200);
+                $this->response(['success' => false, 'message' => 'Invaild  OTP!', 'user_details' => $user_details, 'mobile' => $mobile, 'otp' => $otp], 200);
             }
         } else {
             $this->response(['success' => false, 'message' => 'OTP is not given!',], 200);
@@ -1125,10 +1125,29 @@ class Vendor extends CI_Controller
 
             $user_id = $this->Vendor_model->get_user_by_mobile($mobile);
             if (!empty($user_id)) {
-                $otp_created_at = $this->Vendor_model->get_otp_create_time($user_id);
-                $is_sent = $this->Login_model->sent_otp_for_login($user_id, $login_otp, $otp_created_at);
+                $previous_otp_details = $this->Vendor_model->get_previous_otp_details($user_id);
+                if (!empty($previous_otp_details->created_at))
+                {
+                    $otp_expire_timestamp = strtotime("+".validation_time_of_otp_in_minutes." minutes", strtotime($previous_otp_details->created_at));
+                    if ($otp_expire_timestamp > time())
+                    {
+                        $previous_otp_valid = true;
+                    }
+                }
+
+                if (!empty($previous_otp_valid))
+                {
+                    $is_sent = true;
+                    $response = ['success' => true, 'message' => 'OTP is sent', 'otp' => $previous_otp_details->otp];
+                }
+                else
+                {
+                    $is_sent = $this->Login_model->sent_otp_for_login($user_id, $login_otp, $previous_otp_details->created_at);
+                    $response = ['success' => true, 'message' => 'OTP is sent', 'otp' => $login_otp];
+                }
+                
                 if ($is_sent) {
-                    $this->response(['success' => true, 'message' => 'OTP is sent', 'otp' => $login_otp], 200);
+                    $this->response($response, 200);
                 } else {
                     $this->response(['success' => false, 'message' => 'Something went wrong'], 200);
                 }
